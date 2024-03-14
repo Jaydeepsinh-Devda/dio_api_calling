@@ -1,5 +1,5 @@
-import 'package:api_calling_demo/view/bloc/home_bloc.dart';
-import 'package:api_calling_demo/view/home/home_screen.dart';
+import 'package:api_calling_demo/view/home/bloc/home_bloc.dart';
+import 'package:api_calling_demo/view/home/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

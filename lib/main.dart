@@ -1,5 +1,5 @@
 import "package:api_calling_demo/core/webservice/api_client.dart";
-import "package:api_calling_demo/view/home/home_page.dart";
+import 'package:api_calling_demo/view/home/screen/home_page.dart';
 import "package:flutter/material.dart";
 
 void main() async {
@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomePage());
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
   }
 }
