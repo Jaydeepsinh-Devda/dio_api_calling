@@ -1,6 +1,7 @@
 import 'package:api_calling_demo/core/constant/point_size.dart';
 import 'package:api_calling_demo/core/constant/screen_title.dart';
 import 'package:api_calling_demo/core/constant/strings.dart';
+import 'package:api_calling_demo/gen/assets.gen.dart';
 import 'package:api_calling_demo/ui_components/custom_button/custom_button.dart';
 import 'package:api_calling_demo/ui_components/custom_scroll_widget/custom_scroll_widget.dart';
 import 'package:api_calling_demo/view/login/bloc/login_bloc.dart';
@@ -50,24 +51,34 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
   Widget _buildScaffoldBody(LoginState state) => Container(
-        margin: EdgeInsets.symmetric(horizontal: PointSize.value20),
-        child: SafeArea(
-          child: CustomScrollWidget(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _loginTitleAndGreetingText(),
-                _loginForm(),
-                _loginButton(state),
-                Text(response)
-              ],
-            ),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            opacity: 1,
+            image: AssetImage(Assets.images.loginPageBg.path),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: PointSize.value20),
+          child: SafeArea(
+            child: _customScrollWidget(state),
           ),
         ),
       );
 
-  Widget _loadingIndicator() => const CircularProgressIndicator();
+  Widget _customScrollWidget(LoginState state) => CustomScrollWidget(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _loginTitleAndGreetingText(),
+            _loginForm(),
+            _loginButton(state),
+          ],
+        ),
+      );
 
   Widget _loginTitleAndGreetingText() => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,12 +90,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _loginTitle() => Text(
         ScreenTitle().kLogin,
-        style: TextStyle(fontSize: PointSize.large),
+        style: TextStyle(
+          fontSize: PointSize.large,
+          color: Colors.white,
+        ),
       );
 
   Widget _greetingText() => Text(
         Strings.greetingString.kWelcomeBack,
-        style: TextStyle(fontSize: PointSize.h1),
+        style: TextStyle(
+          fontSize: PointSize.h1,
+          color: Colors.white,
+        ),
       );
 
   Widget _loginForm() => Form(
@@ -108,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _errorSnackbar();
     }
     if (state is LoginSuccessState) {
-      response = state.token;
+      response = "token : ${state.token}";
     }
   }
 

@@ -16,7 +16,7 @@ class LoginSuccessState extends LoginState {
 
   const LoginSuccessState({required this.token});
 
-@override
+  @override
   List<Object?> get props => [token];
 }
 

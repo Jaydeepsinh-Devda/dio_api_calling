@@ -21,6 +21,3 @@ class MyApp extends StatelessWidget {
     return const MyAppPage();
   }
 }
-
-//  LoginPage.tag: (context) => const LoginPage(),
-//         // HomePage.tag: (context) => const HomePage()

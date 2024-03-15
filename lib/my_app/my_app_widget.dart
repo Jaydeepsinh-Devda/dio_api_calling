@@ -1,4 +1,4 @@
-import 'package:api_calling_demo/view/authentication/autehentication_state.dart';
+import 'package:api_calling_demo/view/authentication/authentication_state.dart';
 import 'package:api_calling_demo/view/authentication/authentication_bloc.dart';
 import 'package:api_calling_demo/view/home/screen/home_page.dart';
 import 'package:api_calling_demo/view/login/screen/login_page.dart';
@@ -13,11 +13,8 @@ class MyAppWidget extends StatefulWidget {
 }
 
 class _MyAppWidgetState extends State<MyAppWidget> {
-  late AuthenticationBloc _authBloc;
-
   @override
   void initState() {
-    _authBloc = context.read<AuthenticationBloc>();
     super.initState();
   }
 
@@ -27,6 +24,7 @@ class _MyAppWidgetState extends State<MyAppWidget> {
   }
 
   Widget _buildMaterialApp() => MaterialApp(
+       
         home: __blocBuilder(),
       );
 
@@ -35,10 +33,8 @@ class _MyAppWidgetState extends State<MyAppWidget> {
 
   Widget _builder(BuildContext context, AuthenticationState state) {
     if (state is AuthenticationAuthenticated) {
-      print("Home Page");
       return const HomePage();
     } else if (state is AuthenticationUnauthenticated) {
-      print("Login Page");
       return const LoginPage();
     }
     return const LoginPage();

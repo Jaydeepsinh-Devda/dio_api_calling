@@ -4,15 +4,15 @@ class TextStyles {
   static InputDecoration getInputDecoration() => InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
-          borderSide: BorderSide(
-            color: Colors.blueAccent.shade200,
+          borderSide: const BorderSide(
+            color: Color(0xFF007F73),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
-          borderSide: BorderSide(
-            color: Colors.blueAccent.shade200,
+          borderSide: const BorderSide(
+            color: Color(0xFF007F73),
             width: 2.0,
           ),
         ),

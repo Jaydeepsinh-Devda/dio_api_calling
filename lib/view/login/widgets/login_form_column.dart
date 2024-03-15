@@ -34,11 +34,18 @@ class LoginFormColumn extends StatelessWidget {
 
   Widget _verticalSpacer() => SizedBox(height: PointSize.value30);
 
-  Widget _emailLabel() => Text(Strings.labelString.kEmail);
+  Widget _emailLabel() => Text(
+        Strings.labelString.kEmail,
+        style: const TextStyle(color: Colors.white),
+      );
 
-  Widget _passwordLabel() => Text(Strings.labelString.kPassword);
+  Widget _passwordLabel() => Text(
+        Strings.labelString.kPassword,
+        style: const TextStyle(color: Colors.white),
+      );
 
   Widget _emailTextField() => TextFormField(
+        style: const TextStyle(color: Colors.white),
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.next,
         controller: emailController,
@@ -47,6 +54,7 @@ class LoginFormColumn extends StatelessWidget {
       );
 
   Widget _passwordTextField() => TextFormField(
+        style: const TextStyle(color: Colors.white),
         obscureText: true,
         validator: _validatePassword,
         textInputAction: TextInputAction.done,

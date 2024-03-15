@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: _loginButtonStyle(),
+      style: _loginButtonStyle(context),
       onPressed: onLoginButtonPressed,
       child:
           state is LoginLoadingState ? _loadingIndicator() : _loginButtonText(),
@@ -34,15 +34,16 @@ class CustomButton extends StatelessWidget {
         color: Colors.white,
       );
 
-  ButtonStyle _loginButtonStyle() => ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(Colors.white),
-        backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
-        shape: MaterialStateProperty.all(
+  ButtonStyle _loginButtonStyle(BuildContext context) => ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        backgroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF4CCD99)),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        minimumSize: MaterialStateProperty.all(
+        minimumSize: MaterialStateProperty.all<Size>(
           Size.fromHeight(PointSize.value70),
         ),
       );

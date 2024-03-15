@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:api_calling_demo/view/authentication/autehentication_state.dart';
+import 'package:api_calling_demo/view/authentication/authentication_state.dart';
 import 'package:api_calling_demo/view/authentication/authentication_event.dart';
 import 'package:bloc/bloc.dart';
 
@@ -12,6 +12,6 @@ class AuthenticationBloc
 
   FutureOr<void> _logIn(OnLoggedIn event, Emitter<AuthenticationState> emit) {
     emit(AuthenticationAuthenticated());
-    print("auth bloc");
+    
   }
 }

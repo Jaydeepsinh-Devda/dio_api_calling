@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:api_calling_demo/core/error/exception.dart';
 import 'package:api_calling_demo/core/webservice/api_client.dart';
 import 'package:api_calling_demo/models/login_request.dart';
 import 'package:api_calling_demo/view/authentication/authentication_bloc.dart';
@@ -22,7 +23,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       var response = await ApiClient.loginService.verifyUser(request);
       emit(LoginSuccessState(token: response.data.token));
       authBloc.add(OnLoggedIn());
-      print("login bloc");
+    } on Failure catch (e) {
+      emit(LoginFailureState(error: e.message.toString()));
     } catch (e) {
       emit(LoginFailureState(error: e.toString()));
     }
