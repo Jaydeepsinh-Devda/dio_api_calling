@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'package:api_calling_demo/core/webservice/api_client.dart';
+import 'package:api_calling_demo/view/authentication/authentication_bloc.dart';
 import 'package:api_calling_demo/view/home/bloc/home_event.dart';
 import 'package:api_calling_demo/view/home/bloc/home_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitialState()) {
+  final AuthenticationBloc authBloc;
+  HomeBloc({required this.authBloc}) : super(HomeInitialState()) {
     on<GetPostListEvent>(_fetchPosts);
     on<GetPostByUserID>(_fetchPostsByUserId);
   }

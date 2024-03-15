@@ -1,13 +1,15 @@
 import "package:api_calling_demo/core/webservice/api_client.dart";
-import 'package:api_calling_demo/view/home/screen/home_page.dart';
+import "package:api_calling_demo/my_app/my_app_page.dart";
 import "package:flutter/material.dart";
+import 'package:api_calling_demo/injection_container.dart' as di;
 
 void main() async {
   _init();
   runApp(const MyApp());
 }
 
-void _init() {
+void _init() async {
+  await di.init();
   ApiClient.initServices();
 }
 
@@ -16,9 +18,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
+    return const MyAppPage();
   }
 }
+
+//  LoginPage.tag: (context) => const LoginPage(),
+//         // HomePage.tag: (context) => const HomePage()
