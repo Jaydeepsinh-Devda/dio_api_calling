@@ -7,10 +7,12 @@ import 'package:flutter/material.dart';
 class LoginFormColumn extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final Function(String) onFieldSubmitted;
 
   const LoginFormColumn({
     required this.emailController,
     required this.passwordController,
+    required this.onFieldSubmitted,
     super.key,
   });
 
@@ -25,7 +27,6 @@ class LoginFormColumn extends StatelessWidget {
         _verticalSpacer(),
         _passwordLabel(),
         _passwordTextField(),
-        // _loginButton()
       ],
     );
   }
@@ -58,6 +59,7 @@ class LoginFormColumn extends StatelessWidget {
         obscureText: true,
         validator: _validatePassword,
         textInputAction: TextInputAction.done,
+        onFieldSubmitted: onFieldSubmitted,
         controller: passwordController,
         decoration: TextStyles.getInputDecoration(),
       );

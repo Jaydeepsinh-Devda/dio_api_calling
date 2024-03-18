@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  String response = "Hello";
+  // late String response;
 
   //! Widget Lifecycle Method
   @override
@@ -107,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _loginForm() => Form(
         key: _formKey,
         child: LoginFormColumn(
+          onFieldSubmitted: (_) => _onPasswordFieldSubmitted(),
           emailController: _emailController,
           passwordController: _passwordController,
         ),
@@ -118,33 +119,34 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
   //! Listener
-
   void _listener(BuildContext context, LoginState state) {
     if (state is LoginFailureState) {
-      response = state.error;
-      _errorSnackbar();
-    }
-    if (state is LoginSuccessState) {
-      response = "token : ${state.token}";
+      _errorSnackbar(state.error);
     }
   }
 
   //! Functions
-
   void _onLoginButtonPressed() {
     if (_formKey.currentState!.validate()) {
       _loginBloc.add(
         LoginButtonClickedEvent(
-            email: _emailController.text, password: _passwordController.text),
+          email: _emailController.text,
+          password: _passwordController.text,
+        ),
       );
     }
   }
 
-  void _errorSnackbar() {
+  void _errorSnackbar(String error) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(response),
+        backgroundColor: Colors.red,
+        content: Text(error),
       ),
     );
+  }
+
+  void _onPasswordFieldSubmitted() {
+    _onLoginButtonPressed();
   }
 }

@@ -19,13 +19,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(LoginLoadingState());
 
     try {
-      var request = LoginRequest(email: event.email, password: event.password);
+      var request =
+          LoginRequest(username: event.email, password: event.password);
       var response = await ApiClient.loginService.verifyUser(request);
-      emit(LoginSuccessState(token: response.data.token));
-      authBloc.add(OnLoggedIn());
+      print(response.data);
+      emit(LoginSuccessState(token: response.data.refreshToken ?? "hello"));
+      authBloc.add(LoggedInEvent(token: response.data.refreshToken ?? "hello"));
     } on Failure catch (e) {
+      print("Login Failure error: ${e.toString()}");
       emit(LoginFailureState(error: e.message.toString()));
     } catch (e) {
+      print("error: ${e.toString()}");
       emit(LoginFailureState(error: e.toString()));
     }
   }

@@ -1,4 +1,4 @@
-import 'package:api_calling_demo/models/posts_model.dart';
+import 'package:api_calling_demo/models/user_model.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class HomeState extends Equatable {
@@ -10,21 +10,21 @@ abstract class HomeState extends Equatable {
 
 class HomeInitialState extends HomeState {}
 
-class OnPostsLoadingState extends HomeState {}
+class HomeLoadingState extends HomeState {}
 
-class OnPostsLoadedState extends HomeState {
-  final List<PostsModel> list;
+class OnUsersListLoadedState extends HomeState {
+  final List<Datum> list;
 
-  const OnPostsLoadedState({required this.list});
+  const OnUsersListLoadedState({required this.list});
 
   @override
   List<Object?> get props => [list, identityHashCode(this)];
 }
 
-class HomeErrorState extends HomeState {
+class OnUsersListErrorState extends HomeState {
   final String message;
 
-  const HomeErrorState({required this.message});
+  const OnUsersListErrorState({required this.message});
 
   @override
   List<Object?> get props => [message, identityHashCode(this)];

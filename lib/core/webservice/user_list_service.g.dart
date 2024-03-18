@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_service.dart';
+part of 'user_list_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'login_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _LoginService implements LoginService {
-  _LoginService(
+class _UserListService implements UserListService {
+  _UserListService(
     this._dio, {
     this.baseUrl,
   });
@@ -19,20 +19,20 @@ class _LoginService implements LoginService {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<LoginResponse>> verifyUser(LoginRequest request) async {
+  Future<HttpResponse<UserModel>> fetchUserListing() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<LoginResponse>>(Options(
-      method: 'POST',
+        _setStreamType<HttpResponse<UserModel>>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/authenticate',
+              '/users',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -41,7 +41,7 @@ class _LoginService implements LoginService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = LoginResponse.fromJson(_result.data!);
+    final value = UserModel.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

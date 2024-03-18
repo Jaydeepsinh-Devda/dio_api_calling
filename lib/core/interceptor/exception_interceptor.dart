@@ -18,6 +18,7 @@ class ExceptionInterceptor extends InterceptorsWrapper {
       case DioExceptionType.connectionError:
         throw ServerException(Strings.errorMessage.noInternetConnection);
       case DioExceptionType.unknown:
+        throw ServerException("Something Went Wrong");
     }
 
     super.onError(err, handler);
@@ -32,7 +33,16 @@ class ExceptionInterceptor extends InterceptorsWrapper {
             ResponseFailure.fromJson(response?.data);
 
         throw BadRequestException(
-          exception.error,
+          exception.message,
+          exception.applicationStatusCode,
+        );
+      case 401:
+        final ResponseFailure exception =
+            ResponseFailure.fromJson(response?.data);
+
+        throw BadRequestException(
+          exception.message,
+          exception.applicationStatusCode,
         );
     }
   }

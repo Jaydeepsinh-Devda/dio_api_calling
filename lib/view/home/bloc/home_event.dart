@@ -7,7 +7,7 @@ abstract class HomeEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class GetPostListEvent extends HomeEvent {}
+class GetUsersListEvent extends HomeEvent {}
 
 class GetPostByUserID extends HomeEvent {
   final int userId;
@@ -19,3 +19,5 @@ class GetPostByUserID extends HomeEvent {
 }
 
 class GetPostModelEvent extends HomeEvent {}
+
+class LogoutButtonPressedEvent extends HomeEvent {}

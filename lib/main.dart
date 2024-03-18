@@ -4,13 +4,15 @@ import "package:flutter/material.dart";
 import 'package:api_calling_demo/injection_container.dart' as di;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   _init();
-  runApp(const MyApp());
 }
 
 void _init() async {
   await di.init();
   ApiClient.initServices();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

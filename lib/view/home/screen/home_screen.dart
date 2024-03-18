@@ -1,8 +1,9 @@
-import 'package:api_calling_demo/models/posts_model.dart';
+import 'package:api_calling_demo/core/constant/point_size.dart';
+import 'package:api_calling_demo/core/constant/strings.dart';
+import 'package:api_calling_demo/models/user_model.dart';
 import 'package:api_calling_demo/view/home/bloc/home_bloc.dart';
 import 'package:api_calling_demo/view/home/bloc/home_event.dart';
 import 'package:api_calling_demo/view/home/bloc/home_state.dart';
-import 'package:api_calling_demo/view/post_method/screen/post_method_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,99 +16,113 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late HomeBloc _bloc;
-  List<PostsModel> _list = [];
-  final TextEditingController _userIdController = TextEditingController();
+  List<Datum> _list = [];
 
+  //! Widget Lifecycle Method
   @override
   void initState() {
     _bloc = context.read<HomeBloc>();
-    _bloc.add(GetPostListEvent());
+    _bloc.add(GetUsersListEvent());
     super.initState();
   }
 
+  //! Build Method
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _appBar(),
-      body: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-          if (state is OnPostsLoadedState) {
-            _list = state.list;
-          }
-          return CustomScrollView(
-            slivers: [
-              _sliverToBoxAdapter(),
-              state is OnPostsLoadingState ? _loadingIndicator() : _listView(),
-            ],
-          );
-        },
-      ),
+    return BlocConsumer<HomeBloc, HomeState>(
+      listener: _listener,
+      builder: _builder,
     );
   }
 
+  //! Widget Methods
   AppBar _appBar() => AppBar(
         centerTitle: true,
-        title: _text("API Calling"),
-        actions: [
-          IconButton(
-            onPressed: _navigatePostMethodScreen,
-            icon: const Icon(Icons.arrow_circle_right_outlined),
-          )
+        title: _homePageScreenTitle(),
+      );
+
+  Widget _homePageScreenTitle() => Text(Strings.screenTitle.kHomePage);
+
+  Widget _builder(BuildContext context, HomeState state) {
+    if (state is OnUsersListLoadedState) {
+      _list = state.list;
+    }
+    return Scaffold(
+      appBar: _appBar(),
+      body: _buildScaffoldBody(state),
+      drawer: _drawer(),
+    );
+  }
+
+  Widget _drawer() => Drawer(
+        child: Column(
+          children: [
+            _drawerHeader(),
+            _logoutButtonRow(),
+          ],
+        ),
+      );
+
+  Widget _logoutButtonRow() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _logoutIcon(),
+          _logoutButton(),
         ],
       );
 
-  Widget _sliverToBoxAdapter() => SliverToBoxAdapter(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _text("Enter User Id"),
-              _textField(),
-              _button(),
+  Widget _drawerHeader() => const DrawerHeader(
+        child: Text("Header"),
+      );
+
+  Widget _logoutIcon() => const Icon(
+        Icons.logout,
+        color: Colors.green,
+      );
+
+  Widget _logoutButton() => TextButton(
+        style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all(Colors.green)),
+        onPressed: _onLogoutButtonPressed,
+        child: Text(Strings.button.kLogout),
+      );
+
+  Widget _buildScaffoldBody(HomeState state) => state is HomeLoadingState
+      ? _loadingIndicator()
+      : Container(
+          margin: EdgeInsets.symmetric(horizontal: PointSize.value20),
+          child: CustomScrollView(
+            slivers: [
+              _listView(),
             ],
           ),
-        ),
-      );
+        );
 
-  Widget _button() => Center(
-        child: ElevatedButton(
-          onPressed: () {
-            int userId = int.parse(_userIdController.text);
-            _bloc.add(GetPostByUserID(userId: userId));
-          },
-          child: _text("Click"),
-        ),
-      );
-
-  Widget _textField() => TextField(
-        controller: _userIdController,
-      );
-
-  Widget _text(String text) => Text(text);
-
-  Widget _loadingIndicator() => const SliverToBoxAdapter(
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
+  Widget _loadingIndicator() => const Center(
+        child: CircularProgressIndicator(),
       );
 
   Widget _listView() => SliverList.builder(
         itemCount: _list.length,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: const Icon(Icons.abc),
-            title: Text(_list[index].title.toString()),
+            leading: _circularProfileImage(index),
+            title: _usersEmailId(index),
           );
         },
       );
 
-  // Widget _leading(int index) => CircleAvatar(
-  //       backgroundImage: NetworkImage(_list[index].avatar),
-  //     );
+  Widget _usersEmailId(int index) => Text(_list[index].email.toString());
 
-  void _navigatePostMethodScreen() {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (ctx) => const PostMethodPage()));
+  Widget _circularProfileImage(int index) => CircleAvatar(
+        backgroundImage: NetworkImage(_list[index].avatar),
+      );
+
+  //! Listener
+  void _listener(BuildContext context, HomeState state) {}
+
+  //! Function
+  void _onLogoutButtonPressed() {
+    _bloc.add(LogoutButtonPressedEvent());
   }
 }

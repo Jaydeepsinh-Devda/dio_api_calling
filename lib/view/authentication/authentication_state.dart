@@ -9,6 +9,8 @@ abstract class AuthenticationState extends Equatable {
 
 class AuthenticationInitialState extends AuthenticationState {}
 
+class AuthenticationLoadingState extends AuthenticationState {}
+
 class AuthenticationAuthenticated extends AuthenticationState {}
 
 class AuthenticationUnauthenticated extends AuthenticationState {}

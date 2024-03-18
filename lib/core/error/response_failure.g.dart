@@ -9,11 +9,17 @@ part of 'response_failure.dart';
 _$ResponseFailureImpl _$$ResponseFailureImplFromJson(
         Map<String, dynamic> json) =>
     _$ResponseFailureImpl(
-      error: json['error'] as String,
+      message: json['message'] as String,
+      applicationStatusCode: json['applicationStatusCode'] as int,
+      httpStatus: json['httpStatus'] as int,
+      fieldErrors: json['fieldErrors'],
     );
 
 Map<String, dynamic> _$$ResponseFailureImplToJson(
         _$ResponseFailureImpl instance) =>
     <String, dynamic>{
-      'error': instance.error,
+      'message': instance.message,
+      'applicationStatusCode': instance.applicationStatusCode,
+      'httpStatus': instance.httpStatus,
+      'fieldErrors': instance.fieldErrors,
     };

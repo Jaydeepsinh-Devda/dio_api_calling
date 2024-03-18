@@ -3,17 +3,17 @@ import 'package:api_calling_demo/core/interceptor/exception_interceptor.dart';
 import 'package:api_calling_demo/core/interceptor/request_interceptor.dart';
 import 'package:api_calling_demo/core/interceptor/response_interceptor.dart';
 import 'package:api_calling_demo/core/webservice/login_service.dart';
-import 'package:api_calling_demo/core/webservice/posts_list_service.dart';
+import 'package:api_calling_demo/core/webservice/user_list_service.dart';
 import 'package:dio/dio.dart';
 
 class ApiClient {
-  static late final PostsListService postsListService;
   static late final LoginService loginService;
+  static late final UserListService userListService;
 
   static void initServices() {
     final dio = Dio()
       ..options = BaseOptions(
-        baseUrl: APIStrings.baseUrl,
+        baseUrl: APIStrings.testBaseUrl,
         contentType: Headers.jsonContentType,
       );
 
@@ -23,7 +23,7 @@ class ApiClient {
       ExceptionInterceptor(),
     ]);
 
-    postsListService = PostsListService(dio);
     loginService = LoginService(dio);
+    userListService = UserListService(dio);
   }
 }

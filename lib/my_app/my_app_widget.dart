@@ -1,3 +1,4 @@
+import 'package:api_calling_demo/view/authentication/authentication_event.dart';
 import 'package:api_calling_demo/view/authentication/authentication_state.dart';
 import 'package:api_calling_demo/view/authentication/authentication_bloc.dart';
 import 'package:api_calling_demo/view/home/screen/home_page.dart';
@@ -13,8 +14,11 @@ class MyAppWidget extends StatefulWidget {
 }
 
 class _MyAppWidgetState extends State<MyAppWidget> {
+  late AuthenticationBloc _authBloc;
   @override
   void initState() {
+    _authBloc = context.read<AuthenticationBloc>();
+    _authBloc.add(AppStartedEvent());
     super.initState();
   }
 
@@ -24,7 +28,7 @@ class _MyAppWidgetState extends State<MyAppWidget> {
   }
 
   Widget _buildMaterialApp() => MaterialApp(
-       
+        debugShowCheckedModeBanner: false,
         home: __blocBuilder(),
       );
 

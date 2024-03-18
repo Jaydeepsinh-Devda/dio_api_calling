@@ -10,5 +10,6 @@ class PointSize {
   static double value2 = 2;
   static double value20 = 20;
   static double value30 = 30;
+  static double value50 = 50;
   static double value70 = 70;
 }
