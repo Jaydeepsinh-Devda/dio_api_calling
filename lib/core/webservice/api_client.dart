@@ -4,6 +4,7 @@ import 'package:api_calling_demo/core/interceptor/request_interceptor.dart';
 import 'package:api_calling_demo/core/interceptor/response_interceptor.dart';
 import 'package:api_calling_demo/core/webservice/login_service.dart';
 import 'package:api_calling_demo/core/webservice/user_list_service.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:dio/dio.dart';
 
 class ApiClient {
@@ -13,7 +14,7 @@ class ApiClient {
   static void initServices() {
     final dio = Dio()
       ..options = BaseOptions(
-        baseUrl: APIStrings.baseUrl, 
+        baseUrl: APIStrings.baseUrl,
         contentType: Headers.jsonContentType,
       );
 
@@ -21,6 +22,7 @@ class ApiClient {
       RequestInterceptor(),
       ResponseInterceptor(),
       ExceptionInterceptor(),
+      PrettyDioLogger()
     ]);
 
     loginService = LoginService(dio);
