@@ -14,7 +14,9 @@ class LoginLoadingState extends LoginState {}
 class LoginSuccessState extends LoginState {
   final String token;
 
-  const LoginSuccessState({required this.token});
+  const LoginSuccessState({
+    required this.token,
+  });
 
   @override
   List<Object?> get props => [token];
@@ -23,7 +25,9 @@ class LoginSuccessState extends LoginState {
 class LoginFailureState extends LoginState {
   final String error;
 
-  const LoginFailureState({required this.error});
+  const LoginFailureState({
+    required this.error,
+  });
 
   @override
   List<Object?> get props => [error];

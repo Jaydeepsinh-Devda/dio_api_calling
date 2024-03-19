@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<HomeBloc>(
       create: (context) => serviceLocator<HomeBloc>(),
       child: const HomeScreen(),
     );

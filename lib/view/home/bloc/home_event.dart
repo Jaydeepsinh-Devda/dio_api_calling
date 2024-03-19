@@ -12,7 +12,9 @@ class GetUsersListEvent extends HomeEvent {}
 class GetPostByUserID extends HomeEvent {
   final int userId;
 
-  const GetPostByUserID({required this.userId});
+  const GetPostByUserID({
+    required this.userId,
+  });
 
   @override
   List<Object?> get props => [userId];

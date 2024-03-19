@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: BlocProvider(
+      child: BlocProvider<LoginBloc>(
         create: (context) => serviceLocator<LoginBloc>(),
         child: const LoginScreen(),
       ),

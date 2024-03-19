@@ -283,7 +283,9 @@ Datum _$DatumFromJson(Map<String, dynamic> json) {
 mixin _$Datum {
   int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'first_name')
   String? get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_name')
   String? get lastName => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
 
@@ -300,8 +302,8 @@ abstract class $DatumCopyWith<$Res> {
   $Res call(
       {int id,
       String email,
-      String? firstName,
-      String? lastName,
+      @JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'last_name') String? lastName,
       String avatar});
 }
 
@@ -359,8 +361,8 @@ abstract class _$$DatumImplCopyWith<$Res> implements $DatumCopyWith<$Res> {
   $Res call(
       {int id,
       String email,
-      String? firstName,
-      String? lastName,
+      @JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'last_name') String? lastName,
       String avatar});
 }
 
@@ -412,8 +414,8 @@ class _$DatumImpl implements _Datum {
   const _$DatumImpl(
       {required this.id,
       required this.email,
-      required this.firstName,
-      required this.lastName,
+      @JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'last_name') required this.lastName,
       required this.avatar});
 
   factory _$DatumImpl.fromJson(Map<String, dynamic> json) =>
@@ -424,8 +426,10 @@ class _$DatumImpl implements _Datum {
   @override
   final String email;
   @override
+  @JsonKey(name: 'first_name')
   final String? firstName;
   @override
+  @JsonKey(name: 'last_name')
   final String? lastName;
   @override
   final String avatar;
@@ -472,8 +476,8 @@ abstract class _Datum implements Datum {
   const factory _Datum(
       {required final int id,
       required final String email,
-      required final String? firstName,
-      required final String? lastName,
+      @JsonKey(name: 'first_name') required final String? firstName,
+      @JsonKey(name: 'last_name') required final String? lastName,
       required final String avatar}) = _$DatumImpl;
 
   factory _Datum.fromJson(Map<String, dynamic> json) = _$DatumImpl.fromJson;
@@ -483,8 +487,10 @@ abstract class _Datum implements Datum {
   @override
   String get email;
   @override
+  @JsonKey(name: 'first_name')
   String? get firstName;
   @override
+  @JsonKey(name: 'last_name')
   String? get lastName;
   @override
   String get avatar;

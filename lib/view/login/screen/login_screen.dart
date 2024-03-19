@@ -45,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   //! Widget Methods
-
   Widget _builder(BuildContext context, LoginState state) => Scaffold(
         body: _buildScaffoldBody(state),
       );
@@ -53,18 +52,22 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildScaffoldBody(LoginState state) => Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            opacity: 1,
-            image: AssetImage(Assets.images.loginPageBg.path),
-            fit: BoxFit.cover,
-          ),
+        decoration: _backgroundImage(),
+        child: _padding(state),
+      );
+
+  Widget _padding(LoginState state) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: PointSize.value20),
+        child: SafeArea(
+          child: _customScrollWidget(state),
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: PointSize.value20),
-          child: SafeArea(
-            child: _customScrollWidget(state),
-          ),
+      );
+
+  BoxDecoration _backgroundImage() => BoxDecoration(
+        image: DecorationImage(
+          opacity: 1,
+          image: AssetImage(Assets.images.loginPageBg.path),
+          fit: BoxFit.cover,
         ),
       );
 

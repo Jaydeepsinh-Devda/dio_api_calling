@@ -11,7 +11,10 @@ class LoginButtonClickedEvent extends LoginEvent {
   final String email;
   final String password;
 
-  const LoginButtonClickedEvent({required this.email, required this.password});
+  const LoginButtonClickedEvent({
+    required this.email,
+    required this.password,
+  });
 
   @override
   List<Object?> get props => [email, password];

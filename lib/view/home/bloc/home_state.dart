@@ -15,7 +15,9 @@ class HomeLoadingState extends HomeState {}
 class OnUsersListLoadedState extends HomeState {
   final List<Datum> list;
 
-  const OnUsersListLoadedState({required this.list});
+  const OnUsersListLoadedState({
+    required this.list,
+  });
 
   @override
   List<Object?> get props => [list, identityHashCode(this)];
@@ -24,7 +26,9 @@ class OnUsersListLoadedState extends HomeState {
 class OnUsersListErrorState extends HomeState {
   final String message;
 
-  const OnUsersListErrorState({required this.message});
+  const OnUsersListErrorState({
+    required this.message,
+  });
 
   @override
   List<Object?> get props => [message, identityHashCode(this)];

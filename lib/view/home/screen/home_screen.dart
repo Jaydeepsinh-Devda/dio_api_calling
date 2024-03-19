@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
   Widget _drawerHeader() => const DrawerHeader(
-        child: Text("Header"),
+        child: Icon(Icons.person),
       );
 
   Widget _logoutIcon() => const Icon(
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
 
-  Widget _usersEmailId(int index) => Text(_list[index].email.toString());
+  Widget _usersEmailId(int index) => Text(_list[index].firstName.toString());
 
   Widget _circularProfileImage(int index) => CircleAvatar(
         backgroundImage: NetworkImage(_list[index].avatar),

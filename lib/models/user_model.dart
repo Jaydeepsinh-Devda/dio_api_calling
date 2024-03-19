@@ -23,8 +23,8 @@ class Datum with _$Datum {
   const factory Datum({
     required int id,
     required String email,
-    required String? firstName,
-    required String? lastName,
+    @JsonKey(name: 'first_name') required String? firstName,
+    @JsonKey(name: 'last_name') required String? lastName,
     required String avatar,
   }) = _Datum;
 
