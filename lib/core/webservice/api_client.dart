@@ -13,7 +13,7 @@ class ApiClient {
   static void initServices() {
     final dio = Dio()
       ..options = BaseOptions(
-        baseUrl: APIStrings.testBaseUrl,
+        baseUrl: APIStrings.baseUrl, 
         contentType: Headers.jsonContentType,
       );
 

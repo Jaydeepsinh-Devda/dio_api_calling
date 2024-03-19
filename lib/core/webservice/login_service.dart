@@ -10,7 +10,7 @@ part 'login_service.g.dart';
 abstract class LoginService {
   factory LoginService(Dio dio, {String baseUrl}) = _LoginService;
 
-  @POST(APIStrings.testLogin)
+  @POST(APIStrings.login)
   Future<HttpResponse<LoginResponse>> verifyUser(
     @Body() LoginRequest request
   );

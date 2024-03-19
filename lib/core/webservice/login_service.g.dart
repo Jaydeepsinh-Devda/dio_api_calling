@@ -32,7 +32,7 @@ class _LoginService implements LoginService {
     )
             .compose(
               _dio.options,
-              '/api/authenticate',
+              '/login',
               queryParameters: queryParameters,
               data: _data,
             )
