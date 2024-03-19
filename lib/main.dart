@@ -5,7 +5,7 @@ import 'package:api_calling_demo/injection_container.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  _init();
+  _init(); 
 }
 
 void _init() async {
