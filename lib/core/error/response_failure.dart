@@ -6,10 +6,7 @@ part 'response_failure.g.dart';
 @freezed
 class ResponseFailure with _$ResponseFailure {
     const factory ResponseFailure({
-        required String message,
-        required int applicationStatusCode,
-        required int httpStatus,
-        required dynamic fieldErrors,
+        required String error,
     }) = _ResponseFailure;
 
     factory ResponseFailure.fromJson(Map<String, dynamic> json) => _$ResponseFailureFromJson(json);

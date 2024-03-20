@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class LoginFormColumn extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final Function(String) onFieldSubmitted;
+  final Function(String)? onFieldSubmitted;
 
   const LoginFormColumn({
     required this.emailController,
@@ -31,17 +31,16 @@ class LoginFormColumn extends StatelessWidget {
     );
   }
 
-//! Widget Methods
-
+  //! Widget Methods
   Widget _verticalSpacer() => SizedBox(height: PointSize.value30);
 
   Widget _emailLabel() => Text(
-        Strings.labelString.kEmail,
+        MyAppStrings.labelString.kEmail,
         style: const TextStyle(color: Colors.white),
       );
 
   Widget _passwordLabel() => Text(
-        Strings.labelString.kPassword,
+        MyAppStrings.labelString.kPassword,
         style: const TextStyle(color: Colors.white),
       );
 
@@ -67,20 +66,20 @@ class LoginFormColumn extends StatelessWidget {
   //! Functions
 
   String? _validatePassword(String? val) {
-    if (val!.trim().isEmpty) {
-      return Strings.message.kEnterPassword;
-    } else if (!Validator.isValidPassword(val)) {
-      return Strings.message.kEnterValidPassword;
+    if ((val ?? '').trim().isEmpty) {
+      return MyAppStrings.message.kEnterPassword;
+    } else if (!Validator.isValidPassword(val!)) {
+      return MyAppStrings.message.kEnterValidPassword;
     } else {
       return null;
     }
   }
 
   String? _validateEmail(String? val) {
-    if (val!.trim().isEmpty) {
-      return Strings.message.kEnterEmail;
-    } else if (!Validator.isValidEmail(val)) {
-      return Strings.message.kEnterValidEmail;
+    if ((val ?? '').trim().isEmpty) {
+      return MyAppStrings.message.kEnterEmail;
+    } else if (!Validator.isValidEmail(val!)) {
+      return MyAppStrings.message.kEnterValidEmail;
     } else {
       return null;
     }

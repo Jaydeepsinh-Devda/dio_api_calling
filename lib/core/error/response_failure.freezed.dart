@@ -20,10 +20,7 @@ ResponseFailure _$ResponseFailureFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResponseFailure {
-  String get message => throw _privateConstructorUsedError;
-  int get applicationStatusCode => throw _privateConstructorUsedError;
-  int get httpStatus => throw _privateConstructorUsedError;
-  dynamic get fieldErrors => throw _privateConstructorUsedError;
+  String get error => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,11 +34,7 @@ abstract class $ResponseFailureCopyWith<$Res> {
           ResponseFailure value, $Res Function(ResponseFailure) then) =
       _$ResponseFailureCopyWithImpl<$Res, ResponseFailure>;
   @useResult
-  $Res call(
-      {String message,
-      int applicationStatusCode,
-      int httpStatus,
-      dynamic fieldErrors});
+  $Res call({String error});
 }
 
 /// @nodoc
@@ -57,28 +50,13 @@ class _$ResponseFailureCopyWithImpl<$Res, $Val extends ResponseFailure>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
-    Object? applicationStatusCode = null,
-    Object? httpStatus = null,
-    Object? fieldErrors = freezed,
+    Object? error = null,
   }) {
     return _then(_value.copyWith(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as String,
-      applicationStatusCode: null == applicationStatusCode
-          ? _value.applicationStatusCode
-          : applicationStatusCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      httpStatus: null == httpStatus
-          ? _value.httpStatus
-          : httpStatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      fieldErrors: freezed == fieldErrors
-          ? _value.fieldErrors
-          : fieldErrors // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ) as $Val);
   }
 }
@@ -91,11 +69,7 @@ abstract class _$$ResponseFailureImplCopyWith<$Res>
       __$$ResponseFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String message,
-      int applicationStatusCode,
-      int httpStatus,
-      dynamic fieldErrors});
+  $Res call({String error});
 }
 
 /// @nodoc
@@ -109,28 +83,13 @@ class __$$ResponseFailureImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
-    Object? applicationStatusCode = null,
-    Object? httpStatus = null,
-    Object? fieldErrors = freezed,
+    Object? error = null,
   }) {
     return _then(_$ResponseFailureImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as String,
-      applicationStatusCode: null == applicationStatusCode
-          ? _value.applicationStatusCode
-          : applicationStatusCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      httpStatus: null == httpStatus
-          ? _value.httpStatus
-          : httpStatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      fieldErrors: freezed == fieldErrors
-          ? _value.fieldErrors
-          : fieldErrors // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ));
   }
 }
@@ -138,27 +97,17 @@ class __$$ResponseFailureImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ResponseFailureImpl implements _ResponseFailure {
-  const _$ResponseFailureImpl(
-      {required this.message,
-      required this.applicationStatusCode,
-      required this.httpStatus,
-      required this.fieldErrors});
+  const _$ResponseFailureImpl({required this.error});
 
   factory _$ResponseFailureImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseFailureImplFromJson(json);
 
   @override
-  final String message;
-  @override
-  final int applicationStatusCode;
-  @override
-  final int httpStatus;
-  @override
-  final dynamic fieldErrors;
+  final String error;
 
   @override
   String toString() {
-    return 'ResponseFailure(message: $message, applicationStatusCode: $applicationStatusCode, httpStatus: $httpStatus, fieldErrors: $fieldErrors)';
+    return 'ResponseFailure(error: $error)';
   }
 
   @override
@@ -166,19 +115,12 @@ class _$ResponseFailureImpl implements _ResponseFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ResponseFailureImpl &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.applicationStatusCode, applicationStatusCode) ||
-                other.applicationStatusCode == applicationStatusCode) &&
-            (identical(other.httpStatus, httpStatus) ||
-                other.httpStatus == httpStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.fieldErrors, fieldErrors));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, applicationStatusCode,
-      httpStatus, const DeepCollectionEquality().hash(fieldErrors));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -196,23 +138,14 @@ class _$ResponseFailureImpl implements _ResponseFailure {
 }
 
 abstract class _ResponseFailure implements ResponseFailure {
-  const factory _ResponseFailure(
-      {required final String message,
-      required final int applicationStatusCode,
-      required final int httpStatus,
-      required final dynamic fieldErrors}) = _$ResponseFailureImpl;
+  const factory _ResponseFailure({required final String error}) =
+      _$ResponseFailureImpl;
 
   factory _ResponseFailure.fromJson(Map<String, dynamic> json) =
       _$ResponseFailureImpl.fromJson;
 
   @override
-  String get message;
-  @override
-  int get applicationStatusCode;
-  @override
-  int get httpStatus;
-  @override
-  dynamic get fieldErrors;
+  String get error;
   @override
   @JsonKey(ignore: true)
   _$$ResponseFailureImplCopyWith<_$ResponseFailureImpl> get copyWith =>

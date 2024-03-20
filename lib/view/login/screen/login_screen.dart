@@ -26,8 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  // late String response;
-
   //! Widget Lifecycle Method
   @override
   void initState() {
@@ -87,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _loginTitle(),
-          _greetingText(),
+          _welcomeBackText(),
         ],
       );
 
@@ -99,8 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
 
-  Widget _greetingText() => Text(
-        Strings.greetingString.kWelcomeBack,
+  Widget _welcomeBackText() => Text(
+        MyAppStrings.labelString.kWelcomeBack,
         style: TextStyle(
           fontSize: PointSize.h1,
           color: Colors.white,
@@ -117,7 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
   Widget _loginButton(LoginState state) => CustomButton(
-        state: state,
+        isLoading: state is LoginLoadingState,
+        buttonText: MyAppStrings.button.kLogin,
         onLoginButtonPressed: _onLoginButtonPressed,
       );
 

@@ -3,4 +3,5 @@ class LabelString {
   final String kPassword = "Password";
   final String kEnterUsersPerPagePrompt =
       "Please enter the number of users to display per page:";
+  final String kWelcomeBack = "Welcome Back";
 }

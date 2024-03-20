@@ -1,14 +1,14 @@
 import 'package:api_calling_demo/core/constant/point_size.dart';
-import 'package:api_calling_demo/core/constant/strings.dart';
-import 'package:api_calling_demo/view/login/bloc/login_state.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onLoginButtonPressed;
-  final LoginState state;
+  final bool isLoading;
+  final String buttonText;
 
   const CustomButton({
-    required this.state,
+    required this.buttonText,
+    required this.isLoading,
     required this.onLoginButtonPressed,
     super.key,
   });
@@ -19,14 +19,13 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       style: _loginButtonStyle(context),
       onPressed: onLoginButtonPressed,
-      child:
-          state is LoginLoadingState ? _loadingIndicator() : _loginButtonText(),
+      child: isLoading ? _loadingIndicator() : _loginButtonText(),
     );
   }
 
   //! Widget Methods
   Widget _loginButtonText() => Text(
-        Strings.button.kLogin,
+        buttonText,
         style: TextStyle(fontSize: PointSize.value20),
       );
 

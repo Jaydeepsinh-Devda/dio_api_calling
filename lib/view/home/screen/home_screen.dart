@@ -1,9 +1,10 @@
 import 'package:api_calling_demo/core/constant/point_size.dart';
-import 'package:api_calling_demo/core/constant/strings.dart';
 import 'package:api_calling_demo/models/user_model.dart';
 import 'package:api_calling_demo/view/home/bloc/home_bloc.dart';
 import 'package:api_calling_demo/view/home/bloc/home_event.dart';
 import 'package:api_calling_demo/view/home/bloc/home_state.dart';
+import 'package:api_calling_demo/view/home/widgets/drawer_widget.dart';
+import 'package:api_calling_demo/view/home/widgets/home_screen_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,19 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
   //! Build Method
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeBloc, HomeState>(
-      listener: _listener,
-      builder: _builder,
-    );
+    return _blocConsumer();
   }
 
   //! Widget Methods
-  AppBar _appBar() => AppBar(
-        centerTitle: true,
-        title: _homePageScreenTitle(),
+  Widget _blocConsumer() => BlocConsumer<HomeBloc, HomeState>(
+        listener: _listener,
+        builder: _builder,
       );
-
-  Widget _homePageScreenTitle() => Text(Strings.screenTitle.kHomePage);
 
   Widget _builder(BuildContext context, HomeState state) {
     if (state is OnUsersListLoadedState) {
@@ -50,59 +46,29 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: _appBar(),
       body: _buildScaffoldBody(state),
-      drawer: _drawer(),
+      drawer: _drawerWidget(),
     );
   }
 
-  Widget _drawer() => Drawer(
-        child: Column(
-          children: [
-            _drawerHeader(),
-            _logoutButtonRow(),
-          ],
-        ),
+  HomeScreenAppBar _appBar() => const HomeScreenAppBar();
+
+  Widget _drawerWidget() => DrawerWidget(
+        onLogoutButtonPressed: _onLogoutButtonPressed,
       );
 
-  Widget _logoutButtonRow() => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _logoutIcon(),
-          _logoutButton(),
-        ],
-      );
+  Widget _buildScaffoldBody(HomeState state) =>
+      state is HomeLoadingState ? _loadingIndicator() : _container();
 
-  Widget _drawerHeader() => const DrawerHeader(
-        child: Icon(Icons.person),
+  Widget _container() => Container(
+        margin: EdgeInsets.symmetric(horizontal: PointSize.value20),
+        child: _listView(),
       );
-
-  Widget _logoutIcon() => const Icon(
-        Icons.logout,
-        color: Colors.green,
-      );
-
-  Widget _logoutButton() => TextButton(
-        style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all(Colors.green)),
-        onPressed: _onLogoutButtonPressed,
-        child: Text(Strings.button.kLogout),
-      );
-
-  Widget _buildScaffoldBody(HomeState state) => state is HomeLoadingState
-      ? _loadingIndicator()
-      : Container(
-          margin: EdgeInsets.symmetric(horizontal: PointSize.value20),
-          child: CustomScrollView(
-            slivers: [
-              _listView(),
-            ],
-          ),
-        );
 
   Widget _loadingIndicator() => const Center(
         child: CircularProgressIndicator(),
       );
 
-  Widget _listView() => SliverList.builder(
+  Widget _listView() => ListView.builder(
         itemCount: _list.length,
         itemBuilder: (context, index) {
           return ListTile(
@@ -119,10 +85,23 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
   //! Listener
-  void _listener(BuildContext context, HomeState state) {}
+  void _listener(BuildContext context, HomeState state) {
+    if (state is HomeErrorState) {
+      _errorSnackbar(state.error);
+    }
+  }
 
   //! Function
   void _onLogoutButtonPressed() {
     _bloc.add(LogoutButtonPressedEvent());
+  }
+
+  void _errorSnackbar(String error) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(error),
+      ),
+    );
   }
 }

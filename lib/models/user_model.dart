@@ -7,9 +7,9 @@ part 'user_model.g.dart';
 class UserModel with _$UserModel {
   const factory UserModel({
     required int page,
-    required int? perPage,
+    @JsonKey(name: 'per_page') required int perPage,
     required int total,
-    required int? totalPages,
+    @JsonKey(name: 'total_pages') required int totalPages,
     required List<Datum> data,
     required Support support,
   }) = _UserModel;
@@ -23,8 +23,8 @@ class Datum with _$Datum {
   const factory Datum({
     required int id,
     required String email,
-    @JsonKey(name: 'first_name') required String? firstName,
-    @JsonKey(name: 'last_name') required String? lastName,
+    @JsonKey(name: 'first_name') required String firstName,
+    @JsonKey(name: 'last_name') required String lastName,
     required String avatar,
   }) = _Datum;
 

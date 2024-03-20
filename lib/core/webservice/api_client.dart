@@ -1,4 +1,4 @@
-import 'package:api_calling_demo/core/constant/apis_string.dart';
+import 'package:api_calling_demo/core/app_config.dart';
 import 'package:api_calling_demo/core/interceptor/exception_interceptor.dart';
 import 'package:api_calling_demo/core/interceptor/request_interceptor.dart';
 import 'package:api_calling_demo/core/interceptor/response_interceptor.dart';
@@ -14,7 +14,7 @@ class ApiClient {
   static void initServices() {
     final dio = Dio()
       ..options = BaseOptions(
-        baseUrl: APIStrings.baseUrl,
+        baseUrl: AppConfig.getInstance().apiBaseUrl,
         contentType: Headers.jsonContentType,
       );
 

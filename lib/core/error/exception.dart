@@ -29,3 +29,17 @@ class ServerException extends Failure {
           applicationStatusCode: applicationStatusCode,
         );
 }
+
+class UnauthorisedException extends Failure {
+  UnauthorisedException([message, applicationStatusCode])
+      : super(
+            errorMessage: message,
+            applicationStatusCode: applicationStatusCode);
+}
+
+class FetchDataException extends Failure {
+  FetchDataException([message])
+      : super(
+          errorMessage: message,
+        );
+}

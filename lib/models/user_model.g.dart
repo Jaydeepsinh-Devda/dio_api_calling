@@ -9,9 +9,9 @@ part of 'user_model.dart';
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
       page: json['page'] as int,
-      perPage: json['perPage'] as int?,
+      perPage: json['per_page'] as int,
       total: json['total'] as int,
-      totalPages: json['totalPages'] as int?,
+      totalPages: json['total_pages'] as int,
       data: (json['data'] as List<dynamic>)
           .map((e) => Datum.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -21,9 +21,9 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
       'page': instance.page,
-      'perPage': instance.perPage,
+      'per_page': instance.perPage,
       'total': instance.total,
-      'totalPages': instance.totalPages,
+      'total_pages': instance.totalPages,
       'data': instance.data,
       'support': instance.support,
     };
@@ -31,8 +31,8 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
 _$DatumImpl _$$DatumImplFromJson(Map<String, dynamic> json) => _$DatumImpl(
       id: json['id'] as int,
       email: json['email'] as String,
-      firstName: json['first_name'] as String?,
-      lastName: json['last_name'] as String?,
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
       avatar: json['avatar'] as String,
     );
 

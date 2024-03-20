@@ -21,9 +21,11 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   int get page => throw _privateConstructorUsedError;
-  int? get perPage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'per_page')
+  int get perPage => throw _privateConstructorUsedError;
   int get total => throw _privateConstructorUsedError;
-  int? get totalPages => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_pages')
+  int get totalPages => throw _privateConstructorUsedError;
   List<Datum> get data => throw _privateConstructorUsedError;
   Support get support => throw _privateConstructorUsedError;
 
@@ -40,9 +42,9 @@ abstract class $UserModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int page,
-      int? perPage,
+      @JsonKey(name: 'per_page') int perPage,
       int total,
-      int? totalPages,
+      @JsonKey(name: 'total_pages') int totalPages,
       List<Datum> data,
       Support support});
 
@@ -63,9 +65,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? page = null,
-    Object? perPage = freezed,
+    Object? perPage = null,
     Object? total = null,
-    Object? totalPages = freezed,
+    Object? totalPages = null,
     Object? data = null,
     Object? support = null,
   }) {
@@ -74,18 +76,18 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
-      perPage: freezed == perPage
+      perPage: null == perPage
           ? _value.perPage
           : perPage // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      totalPages: freezed == totalPages
+      totalPages: null == totalPages
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -116,9 +118,9 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int page,
-      int? perPage,
+      @JsonKey(name: 'per_page') int perPage,
       int total,
-      int? totalPages,
+      @JsonKey(name: 'total_pages') int totalPages,
       List<Datum> data,
       Support support});
 
@@ -138,9 +140,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? page = null,
-    Object? perPage = freezed,
+    Object? perPage = null,
     Object? total = null,
-    Object? totalPages = freezed,
+    Object? totalPages = null,
     Object? data = null,
     Object? support = null,
   }) {
@@ -149,18 +151,18 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
-      perPage: freezed == perPage
+      perPage: null == perPage
           ? _value.perPage
           : perPage // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      totalPages: freezed == totalPages
+      totalPages: null == totalPages
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -178,9 +180,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
       {required this.page,
-      required this.perPage,
+      @JsonKey(name: 'per_page') required this.perPage,
       required this.total,
-      required this.totalPages,
+      @JsonKey(name: 'total_pages') required this.totalPages,
       required final List<Datum> data,
       required this.support})
       : _data = data;
@@ -191,11 +193,13 @@ class _$UserModelImpl implements _UserModel {
   @override
   final int page;
   @override
-  final int? perPage;
+  @JsonKey(name: 'per_page')
+  final int perPage;
   @override
   final int total;
   @override
-  final int? totalPages;
+  @JsonKey(name: 'total_pages')
+  final int totalPages;
   final List<Datum> _data;
   @override
   List<Datum> get data {
@@ -248,9 +252,9 @@ class _$UserModelImpl implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {required final int page,
-      required final int? perPage,
+      @JsonKey(name: 'per_page') required final int perPage,
       required final int total,
-      required final int? totalPages,
+      @JsonKey(name: 'total_pages') required final int totalPages,
       required final List<Datum> data,
       required final Support support}) = _$UserModelImpl;
 
@@ -260,11 +264,13 @@ abstract class _UserModel implements UserModel {
   @override
   int get page;
   @override
-  int? get perPage;
+  @JsonKey(name: 'per_page')
+  int get perPage;
   @override
   int get total;
   @override
-  int? get totalPages;
+  @JsonKey(name: 'total_pages')
+  int get totalPages;
   @override
   List<Datum> get data;
   @override
@@ -284,9 +290,9 @@ mixin _$Datum {
   int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
-  String? get firstName => throw _privateConstructorUsedError;
+  String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
-  String? get lastName => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -302,8 +308,8 @@ abstract class $DatumCopyWith<$Res> {
   $Res call(
       {int id,
       String email,
-      @JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
       String avatar});
 }
 
@@ -322,8 +328,8 @@ class _$DatumCopyWithImpl<$Res, $Val extends Datum>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? avatar = null,
   }) {
     return _then(_value.copyWith(
@@ -335,14 +341,14 @@ class _$DatumCopyWithImpl<$Res, $Val extends Datum>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -361,8 +367,8 @@ abstract class _$$DatumImplCopyWith<$Res> implements $DatumCopyWith<$Res> {
   $Res call(
       {int id,
       String email,
-      @JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
       String avatar});
 }
 
@@ -379,8 +385,8 @@ class __$$DatumImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? avatar = null,
   }) {
     return _then(_$DatumImpl(
@@ -392,14 +398,14 @@ class __$$DatumImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -427,10 +433,10 @@ class _$DatumImpl implements _Datum {
   final String email;
   @override
   @JsonKey(name: 'first_name')
-  final String? firstName;
+  final String firstName;
   @override
   @JsonKey(name: 'last_name')
-  final String? lastName;
+  final String lastName;
   @override
   final String avatar;
 
@@ -476,8 +482,8 @@ abstract class _Datum implements Datum {
   const factory _Datum(
       {required final int id,
       required final String email,
-      @JsonKey(name: 'first_name') required final String? firstName,
-      @JsonKey(name: 'last_name') required final String? lastName,
+      @JsonKey(name: 'first_name') required final String firstName,
+      @JsonKey(name: 'last_name') required final String lastName,
       required final String avatar}) = _$DatumImpl;
 
   factory _Datum.fromJson(Map<String, dynamic> json) = _$DatumImpl.fromJson;
@@ -488,10 +494,10 @@ abstract class _Datum implements Datum {
   String get email;
   @override
   @JsonKey(name: 'first_name')
-  String? get firstName;
+  String get firstName;
   @override
   @JsonKey(name: 'last_name')
-  String? get lastName;
+  String get lastName;
   @override
   String get avatar;
   @override

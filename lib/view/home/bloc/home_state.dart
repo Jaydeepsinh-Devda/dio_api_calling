@@ -23,13 +23,13 @@ class OnUsersListLoadedState extends HomeState {
   List<Object?> get props => [list, identityHashCode(this)];
 }
 
-class OnUsersListErrorState extends HomeState {
-  final String message;
+class HomeErrorState extends HomeState {
+  final String error;
 
-  const OnUsersListErrorState({
-    required this.message,
+  const HomeErrorState({
+    required this.error,
   });
 
   @override
-  List<Object?> get props => [message, identityHashCode(this)];
+  List<Object?> get props => [error, identityHashCode(this)];
 }

@@ -8,17 +8,21 @@ class ExceptionInterceptor extends InterceptorsWrapper {
   void onError(DioException err, ErrorInterceptorHandler handler) {
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
+        throw ServerException(MyAppStrings.message.kRequestTimeout);
       case DioExceptionType.sendTimeout:
+        throw ServerException(MyAppStrings.message.kSendTimeout);
       case DioExceptionType.receiveTimeout:
+        throw ServerException(MyAppStrings.message.kNoInternetConnection);
       case DioExceptionType.badCertificate:
       case DioExceptionType.badResponse:
         handleResponse(err);
         break;
       case DioExceptionType.cancel:
+        throw ServerException(MyAppStrings.message.kRequestCancelled);
       case DioExceptionType.connectionError:
-        throw ServerException(Strings.errorMessage.noInternetConnection);
+        throw ServerException(MyAppStrings.message.kNoInternetConnection);
       case DioExceptionType.unknown:
-        throw ServerException("Something Went Wrong");
+        throw ServerException(MyAppStrings.message.kSomethingWentWrong);
     }
 
     super.onError(err, handler);
@@ -33,17 +37,19 @@ class ExceptionInterceptor extends InterceptorsWrapper {
             ResponseFailure.fromJson(response?.data);
 
         throw BadRequestException(
-          exception.message,
-          exception.applicationStatusCode,
+          exception.error,
         );
       case 401:
         final ResponseFailure exception =
             ResponseFailure.fromJson(response?.data);
 
-        throw BadRequestException(
-          exception.message,
-          exception.applicationStatusCode,
+        throw UnauthorisedException(
+          exception.error,
         );
+      case 500:
+      default:
+        throw FetchDataException(
+            "${MyAppStrings.message.kFetchDataExceptionMessage} ${response?.statusCode}");
     }
   }
 }

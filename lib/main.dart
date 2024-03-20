@@ -1,4 +1,5 @@
 import "package:api_calling_demo/core/app_config.dart";
+import "package:api_calling_demo/core/util/logger.dart";
 import "package:api_calling_demo/core/webservice/api_client.dart";
 import "package:api_calling_demo/my_app/my_app_page.dart";
 import "package:flutter/material.dart";
@@ -10,12 +11,14 @@ void main() async {
 }
 
 void _init() async {
+  loggerConfig();
   await di.init();
-  ApiClient.initServices();
 
   bool isAppConfigured = await AppConfig.configure();
 
   if (isAppConfigured) {
+    ApiClient.initServices();
+    debugPrint("BaseUrl Taken: ${AppConfig.getInstance().apiBaseUrl}");
     runApp(const MyApp());
   } else {
     runApp(_defaultApp());
