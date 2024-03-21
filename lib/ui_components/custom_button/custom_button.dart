@@ -1,4 +1,5 @@
 import 'package:api_calling_demo/core/constant/point_size.dart';
+import 'package:api_calling_demo/core/constant/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -13,11 +14,11 @@ class CustomButton extends StatelessWidget {
     super.key,
   });
 
-//! Build Method
+  //! Build Method
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: _loginButtonStyle(context),
+      style: TextStyles.getCustomButtonStyle(),
       onPressed: onLoginButtonPressed,
       child: isLoading ? _loadingIndicator() : _loginButtonText(),
     );
@@ -31,19 +32,5 @@ class CustomButton extends StatelessWidget {
 
   Widget _loadingIndicator() => const CircularProgressIndicator(
         color: Colors.white,
-      );
-
-  ButtonStyle _loginButtonStyle(BuildContext context) => ButtonStyle(
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        backgroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFF4CCD99)),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-        minimumSize: MaterialStateProperty.all<Size>(
-          Size.fromHeight(PointSize.value70),
-        ),
       );
 }

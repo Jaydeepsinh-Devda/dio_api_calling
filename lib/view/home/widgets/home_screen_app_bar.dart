@@ -1,7 +1,7 @@
 import 'package:api_calling_demo/core/constant/strings.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget{
+class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeScreenAppBar({super.key});
 
   @override
@@ -13,8 +13,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget{
   }
 
   Widget _homePageScreenTitle() => Text(MyAppStrings.screenTitle.kHomePage);
-  
+
   @override
-  
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

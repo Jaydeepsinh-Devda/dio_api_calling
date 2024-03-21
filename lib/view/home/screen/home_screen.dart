@@ -61,21 +61,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _container() => Container(
         margin: EdgeInsets.symmetric(horizontal: PointSize.value20),
-        child: _listView(),
+        child: _listViewBuilder(),
       );
 
   Widget _loadingIndicator() => const Center(
         child: CircularProgressIndicator(),
       );
 
-  Widget _listView() => ListView.builder(
+  Widget _listViewBuilder() => ListView.builder(
         itemCount: _list.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: _circularProfileImage(index),
-            title: _usersEmailId(index),
-          );
+          return _listTile(index);
         },
+      );
+
+  Widget _listTile(int index) => ListTile(
+        leading: _circularProfileImage(index),
+        title: _usersEmailId(index),
       );
 
   Widget _usersEmailId(int index) => Text(_list[index].firstName.toString());

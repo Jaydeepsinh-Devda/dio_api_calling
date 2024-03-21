@@ -1,6 +1,5 @@
 import 'package:api_calling_demo/core/constant/button_title_string.dart';
 import 'package:api_calling_demo/core/constant/channel.dart';
-import 'package:api_calling_demo/core/constant/greeting_string.dart';
 import 'package:api_calling_demo/core/constant/label_string.dart';
 import 'package:api_calling_demo/core/constant/message_string.dart';
 import 'package:api_calling_demo/core/constant/screen_title.dart';

@@ -1,6 +1,7 @@
 import 'package:api_calling_demo/core/constant/point_size.dart';
 import 'package:api_calling_demo/core/constant/screen_title.dart';
 import 'package:api_calling_demo/core/constant/strings.dart';
+import 'package:api_calling_demo/core/constant/text_styles.dart';
 import 'package:api_calling_demo/gen/assets.gen.dart';
 import 'package:api_calling_demo/ui_components/custom_button/custom_button.dart';
 import 'package:api_calling_demo/ui_components/custom_scroll_widget/custom_scroll_widget.dart';
@@ -91,18 +92,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _loginTitle() => Text(
         ScreenTitle().kLogin,
-        style: TextStyle(
-          fontSize: PointSize.large,
-          color: Colors.white,
-        ),
+        style: TextStyles.getLargeWhite(),
       );
 
   Widget _welcomeBackText() => Text(
         MyAppStrings.labelString.kWelcomeBack,
-        style: TextStyle(
-          fontSize: PointSize.h1,
-          color: Colors.white,
-        ),
+        style: TextStyles.getH1WhiteRegular(),
       );
 
   Widget _loginForm() => Form(

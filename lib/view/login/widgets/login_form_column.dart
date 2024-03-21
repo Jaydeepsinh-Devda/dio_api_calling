@@ -36,16 +36,16 @@ class LoginFormColumn extends StatelessWidget {
 
   Widget _emailLabel() => Text(
         MyAppStrings.labelString.kEmail,
-        style: const TextStyle(color: Colors.white),
+        style: TextStyles.getLoginFormStyles(),
       );
 
   Widget _passwordLabel() => Text(
         MyAppStrings.labelString.kPassword,
-        style: const TextStyle(color: Colors.white),
+        style:  TextStyles.getLoginFormStyles(),
       );
 
   Widget _emailTextField() => TextFormField(
-        style: const TextStyle(color: Colors.white),
+        style:  TextStyles.getLoginFormStyles(),
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.next,
         controller: emailController,
@@ -54,7 +54,7 @@ class LoginFormColumn extends StatelessWidget {
       );
 
   Widget _passwordTextField() => TextFormField(
-        style: const TextStyle(color: Colors.white),
+        style:  TextStyles.getLoginFormStyles(),
         obscureText: true,
         validator: _validatePassword,
         textInputAction: TextInputAction.done,
