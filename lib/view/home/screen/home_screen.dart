@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late HomeBloc _bloc;
-  List<Datum> _list = [];
+  List<UserModel> _list = [];
 
   //! Widget Lifecycle Method
   @override
@@ -50,7 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  HomeScreenAppBar _appBar() => const HomeScreenAppBar();
+  HomeScreenAppBar _appBar() => HomeScreenAppBar(
+        onRefreshButtonPressed: _onRefreshButtonPressed,
+      );
 
   Widget _drawerWidget() => DrawerWidget(
         onLogoutButtonPressed: _onLogoutButtonPressed,
@@ -76,15 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
   Widget _listTile(int index) => ListTile(
-        leading: _circularProfileImage(index),
-        title: _usersEmailId(index),
+        title: _usersName(index),
       );
 
-  Widget _usersEmailId(int index) => Text(_list[index].firstName.toString());
-
-  Widget _circularProfileImage(int index) => CircleAvatar(
-        backgroundImage: NetworkImage(_list[index].avatar),
-      );
+  Widget _usersName(int index) => Text("");
 
   //! Listener
   void _listener(BuildContext context, HomeState state) {
@@ -106,4 +103,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  void _onRefreshButtonPressed() => _bloc.add(GetUsersListEvent());
 }

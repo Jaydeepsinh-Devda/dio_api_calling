@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "565325223417",
+    "project_id": "dio-api-calling",
+    "storage_bucket": "dio-api-calling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565325223417:android:2fb7221588552eef73d928",
+        "android_client_info": {
+          "package_name": "com.example.api_calling_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI5UgHBNWqfh-5j-5TIcpUjwu9AYalPxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

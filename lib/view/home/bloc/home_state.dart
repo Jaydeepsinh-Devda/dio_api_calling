@@ -13,7 +13,7 @@ class HomeInitialState extends HomeState {}
 class HomeLoadingState extends HomeState {}
 
 class OnUsersListLoadedState extends HomeState {
-  final List<Datum> list;
+  final List<UserModel> list;
 
   const OnUsersListLoadedState({
     required this.list,
