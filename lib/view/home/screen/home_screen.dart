@@ -1,5 +1,5 @@
 import 'package:api_calling_demo/core/constant/point_size.dart';
-import 'package:api_calling_demo/models/user_model.dart';
+import 'package:api_calling_demo/models/users_model.dart';
 import 'package:api_calling_demo/view/home/bloc/home_bloc.dart';
 import 'package:api_calling_demo/view/home/bloc/home_event.dart';
 import 'package:api_calling_demo/view/home/bloc/home_state.dart';
@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late HomeBloc _bloc;
-  List<UserModel> _list = [];
+  List<UsersModel> _list = [];
 
   //! Widget Lifecycle Method
   @override

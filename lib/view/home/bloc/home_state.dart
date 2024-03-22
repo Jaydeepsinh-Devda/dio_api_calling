@@ -1,4 +1,4 @@
-import 'package:api_calling_demo/models/user_model.dart';
+import 'package:api_calling_demo/models/users_model.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class HomeState extends Equatable {
@@ -13,7 +13,7 @@ class HomeInitialState extends HomeState {}
 class HomeLoadingState extends HomeState {}
 
 class OnUsersListLoadedState extends HomeState {
-  final List<UserModel> list;
+  final List<UsersModel> list;
 
   const OnUsersListLoadedState({
     required this.list,

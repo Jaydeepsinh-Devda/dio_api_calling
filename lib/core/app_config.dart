@@ -5,7 +5,7 @@ import 'package:api_calling_demo/core/util/utilities.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-enum Environment { dev, prod }
+enum Environment { develop, production, stage }
 
 class AppConfig {
   Environment flavor;
@@ -35,11 +35,14 @@ class AppConfig {
   static void _setUpEnvironment(Environment flavorName) {
     late String baseUrl;
     late Environment flavor;
-    if (flavorName == Environment.dev) {
+    if (flavorName == Environment.develop) {
       baseUrl = Profiles.developProfile.baseUrl;
       flavor = flavorName;
-    } else if (flavorName == Environment.prod) {
+    } else if (flavorName == Environment.production) {
       baseUrl = Profiles.productionProfile.basUrl;
+      flavor = flavorName;
+    } else if (flavorName == Environment.stage) {
+      baseUrl = Profiles.developProfile.baseUrl;
       flavor = flavorName;
     }
     _instance = AppConfig(flavor: flavor, apiBaseUrl: baseUrl);

@@ -50,7 +50,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-         multiDexEnabled true
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -61,18 +61,23 @@ android {
         }
     }
 
-    flavorDimensions "default"
+    flavorDimensions "flavor-type"
 
     productFlavors {
-        dev {
-            dimension "default"
+        develop {
+            dimension "flavor-type"
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "dev FlavorTest"
+            resValue "string", "app_name", "ApiCalling Develop"
         }
-        prod {
-            dimension "default"
+        stage {
+            dimension "flavor-type"
+            applicationIdSuffix ".stage"
+            resValue "string", "app_name", "ApiCalling Stage"
+        }
+        prodiction {
+            dimension "flavor-type"
             applicationIdSuffix ".prod"
-            resValue "string", "app_name", "FlavorTest"
+            resValue "string", "app_name", "ApiCalling"
         }
     }
 
